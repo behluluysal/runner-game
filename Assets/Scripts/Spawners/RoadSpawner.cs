@@ -5,13 +5,13 @@ using UnityEngine;
 public class RoadSpawner : MonoBehaviour
 {
     private ObjectPooler _objectPooler;
-
     private bool spawningObject = false;
     [SerializeField] private float groundSpawnDistance = 10f;
 
     public static RoadSpawner Instance;
     private void Awake()
     {
+       
         Instance = this;
     }
 
@@ -33,6 +33,9 @@ public class RoadSpawner : MonoBehaviour
 
     public void SpawnGround()
     {
-        _objectPooler.SpawnFromPool(PoolObjects.Road, new Vector3(0, 0, groundSpawnDistance), Quaternion.identity);
+        GameObject Road = _objectPooler.SpawnFromPool(PoolObjects.Road, new Vector3(0, 0, groundSpawnDistance), Quaternion.identity);
+        int type = Random.Range(1, 3);
+        ObstacleSpawner.Instance.SpawnObstacle(Road, type);
+        GemSpawner.Instance.SpawnGem(Road, type);
     }
 }
