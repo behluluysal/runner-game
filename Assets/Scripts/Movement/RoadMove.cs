@@ -24,6 +24,11 @@ public class RoadMove : MonoBehaviour
     }
     private void MoveRoad()
     {
+        if(GameManager.Instance.State != GameManager.GameState.PlayerTurn)
+        {
+            return;
+        }
+
         transform.position += -Vector3.forward * Time.deltaTime * Speed;
         if(transform.position.z <= _objectDistance && _canSpawnGround)
         {

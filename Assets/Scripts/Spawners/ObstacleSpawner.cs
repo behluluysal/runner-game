@@ -63,14 +63,12 @@ public class ObstacleSpawner : MonoBehaviour
             Debug.LogError(e.Message);
             throw;
         }
-       
-        
     }
     private void SetAllChildsFalse(Transform ParentTransform)
     {
         foreach (Transform child in ParentTransform)
         {
-            if(child.tag == "PlayArea")
+            if(child.CompareTag("PlayArea"))
                 child.gameObject.SetActive(false);
         }
     }
@@ -78,7 +76,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         foreach (Transform child in ParentTransform)
         {
-            if (child.gameObject.activeSelf && child.tag == "PlayArea")
+            if (child.gameObject.activeSelf && child.CompareTag("PlayArea"))
                 return child.transform.name;
         }
         return string.Empty;

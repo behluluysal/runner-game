@@ -19,6 +19,7 @@ public class GemSpawner : MonoBehaviour
         try
         {
             Transform typeObj = Parent.transform.transform.Find($"Type{type}");
+            SetAllChildsFalse(Parent.transform);
             typeObj.gameObject.SetActive(true);
             typeObj = typeObj.Find("Collectables");
 
@@ -66,7 +67,7 @@ public class GemSpawner : MonoBehaviour
     {
         foreach (Transform child in ParentTransform)
         {
-            if (child.tag == "PlayArea")
+            if (child.CompareTag("PlayArea"))
                 child.gameObject.SetActive(false);
         }
     }
@@ -74,7 +75,7 @@ public class GemSpawner : MonoBehaviour
     {
         foreach (Transform child in ParentTransform)
         {
-            if (child.gameObject.activeSelf && child.tag == "PlayArea")
+            if (child.gameObject.activeSelf && child.CompareTag("PlayArea"))
                 return child.transform.name;
         }
         return string.Empty;
