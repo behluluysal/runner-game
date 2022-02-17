@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public GameState State;
     public static event Action<GameState> OnGameStateChanged;
+    [SerializeField] private int Score = 0;
+    [SerializeField] private int Health = 3;
     private void Awake()
     {
         Instance = this;
