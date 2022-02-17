@@ -5,7 +5,7 @@ using UnityEngine;
 public class InputController : MonoBehaviour
 {
     Vector3 firstPos, endPos;
-    [SerializeField] private float PlayerSpeed = 3;
+    [SerializeField] private float PlayerSpeed = 3.75f;
 
     void Update()
     {
@@ -19,13 +19,15 @@ public class InputController : MonoBehaviour
 
             float farkX = endPos.x - firstPos.x;
 
-            //var desiredPosX = farkX * Time.deltaTime * PlayerSpeed;
-            //desiredPosX = Mathf.Clamp(transform.position.x + desiredPosX, -1.5f, 1.5f);
-            //transform.Translate(desiredPosX, 0, 0);
+            farkX = Mathf.Clamp(farkX, -1.5f, 1.5f);
 
-            var pos = transform.position;
-            pos.x = Mathf.Clamp(pos.x, -1.5f, 1.5f);
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, pos, 1f * Time.deltaTime * 15f);
+            transform.localPosition = 
+                Vector3.MoveTowards(
+                    transform.localPosition, 
+                    new Vector3(farkX, transform.position.y, transform.position.z),
+                    Time.deltaTime * PlayerSpeed
+                    );
+
         }
         if(Input.GetMouseButtonUp(0))
         {

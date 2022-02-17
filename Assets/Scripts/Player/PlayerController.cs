@@ -37,12 +37,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //_playerMovementInput = new Vector3(Input.GetAxis("Horizontal"),0f, Input.GetAxis("Vertical"));
 
-        //MovePlayer();
     }
     private void LateUpdate()
     {
         PlayerCameras.position = transform.position + CameraOffSet;
+        transform.localEulerAngles = new Vector3(0, 0, 0);
     }
 }
