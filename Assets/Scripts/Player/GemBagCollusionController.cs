@@ -16,7 +16,7 @@ public class GemBagCollusionController : MonoBehaviour
             collision.gameObject.SetActive(false);
             collision.transform.parent = null;
             collision.transform.GetComponent<MeshRenderer>().enabled = true;
-            StartCoroutine(GameManager.Instance.AddScore(5));
+            StartCoroutine(GameManager.Instance.AddScore(50));
         }
     }
 }

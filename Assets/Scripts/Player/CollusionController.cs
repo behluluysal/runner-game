@@ -17,5 +17,9 @@ public class CollusionController : MonoBehaviour
                 GameManager.Instance.HPLoss();
             }
         }
+        if(collision.collider.tag == "Finish")
+        {
+            GameManager.Instance.UpdateGameState(GameManager.GameState.Victory);
+        }
     }
 }

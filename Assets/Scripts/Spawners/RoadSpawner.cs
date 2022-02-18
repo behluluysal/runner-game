@@ -14,8 +14,12 @@ public class RoadSpawner : MonoBehaviour
     public static RoadSpawner Instance;
     private void Awake()
     {
-       
         Instance = this;
+        GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+    }
+    private void OnDestroy()
+    {
+        GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
     }
 
 
@@ -23,14 +27,6 @@ public class RoadSpawner : MonoBehaviour
     void Start()
     {
         _objectPooler = ObjectPooler.Instance;
-        _objectPooler.SpawnFromPool(PoolObjects.Road, new Vector3(0, 0, 0), Quaternion.identity);
-        _objectPooler.SpawnFromPool(PoolObjects.Road, new Vector3(0, 0, 7.62f), Quaternion.identity);
-        _objectPooler.SpawnFromPool(PoolObjects.Road, new Vector3(0, 0, 15.24f), Quaternion.identity);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
 
@@ -55,5 +51,18 @@ public class RoadSpawner : MonoBehaviour
         int type = Random.Range(1, 3);
         ObstacleSpawner.Instance.SpawnObstacle(Road, type);
         GemSpawner.Instance.SpawnGem(Road, type);
+    }
+
+    private void GameManager_OnGameStateChanged(GameManager.GameState obj)
+    {
+        if(obj == GameManager.GameState.PlayerTurn && GameManager.Instance.NewGame)
+        {
+            _objectPooler.SpawnFromPool(PoolObjects.RoadEmpty, new Vector3(0, 0, 0), Quaternion.identity);
+            _objectPooler.SpawnFromPool(PoolObjects.RoadEmpty, new Vector3(0, 0, 7.62f), Quaternion.identity);
+            _objectPooler.SpawnFromPool(PoolObjects.RoadEmpty, new Vector3(0, 0, 15.24f), Quaternion.identity);
+        }
+        _emptyRoadCount = 0;
+        _roadCount = 0;
+        _hasFinishLineGenerated = false;
     }
 }

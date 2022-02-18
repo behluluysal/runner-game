@@ -31,11 +31,12 @@ public class ObstacleSpawner : MonoBehaviour
                 obstacle.transform.rotation = Quaternion.Euler(0, 90, 0);
             }
         }
-        catch (System.Exception)
+        catch (System.Exception e)
         {
+            Debug.LogError(e.Message);
             throw;
         }
-        
+
     }
     public void SetObstaclesFalse(GameObject Parent)
     {

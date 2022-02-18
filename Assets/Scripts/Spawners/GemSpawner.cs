@@ -30,8 +30,9 @@ public class GemSpawner : MonoBehaviour
                 gem.transform.localPosition = new Vector3(0, 0, 0);
             }
         }
-        catch (System.Exception)
+        catch (System.Exception e)
         {
+            Debug.LogError(e.Message);
             throw;
         }
 
@@ -56,8 +57,9 @@ public class GemSpawner : MonoBehaviour
                 }
             }
         }
-        catch (System.Exception)
+        catch (System.Exception e)
         {
+            Debug.LogError(e.Message);
             throw;
         }
     }
