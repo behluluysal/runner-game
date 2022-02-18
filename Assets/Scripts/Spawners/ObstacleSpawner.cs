@@ -31,9 +31,8 @@ public class ObstacleSpawner : MonoBehaviour
                 obstacle.transform.rotation = Quaternion.Euler(0, 90, 0);
             }
         }
-        catch (System.Exception e)
+        catch (System.Exception)
         {
-            Debug.LogError("ete");
             throw;
         }
         

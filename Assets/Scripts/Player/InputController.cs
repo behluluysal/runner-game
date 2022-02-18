@@ -9,6 +9,9 @@ public class InputController : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.State != GameManager.GameState.PlayerTurn)
+            return;
+
         if(Input.GetMouseButtonDown(0))
         {
             firstPos = Input.mousePosition;

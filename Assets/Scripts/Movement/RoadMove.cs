@@ -6,7 +6,6 @@ public class RoadMove : MonoBehaviour
 {
 
     [SerializeField] private float Speed = 5;
-    [SerializeField] private float Sensitivity = 3;
     [SerializeField] private float _objectDistance = -10f;
     [SerializeField] private float _despawnDistance = -20f;
 

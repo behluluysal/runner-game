@@ -5,7 +5,6 @@ using UnityEngine;
 public class RoadSpawner : MonoBehaviour
 {
     private ObjectPooler _objectPooler;
-    private bool spawningObject = false;
     [SerializeField] private float groundSpawnDistance = 10f;
 
     public static RoadSpawner Instance;
