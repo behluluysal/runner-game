@@ -25,10 +25,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI BuyHpErrorText;
     [SerializeField] private TextMeshProUGUI BuyBoostErrorText;
     [SerializeField] public GameObject RestartButton;
+    [SerializeField] public TextMeshProUGUI StartButtonText;
     private void Awake()
     {
         Instance = this;
-        TotalScoreText.text = "0";
     }
 
     public void UpdateGameState(GameState newState)
@@ -56,6 +56,8 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToReady()
     {
+        TotalScoreText.text = $"{TotalScore}";
+        StartButtonText.text = $"Press Here to Start\nLevel: {LevelManager.Instance.CurrentLevel}";
         UpdateGameState(GameState.Ready);
         return;
     }

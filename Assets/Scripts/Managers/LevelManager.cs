@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
-    [SerializeField] public int CurrentLevel { get; set; } = 1;
-    [SerializeField] public int LevelCount { get; set; } = 3;
-    [SerializeField] public int RoadLenght { get; set; } = 10;
-    [SerializeField] public Difficulty Difficulty { get; set; } = Difficulty.Easy;
+    [SerializeField] public int CurrentLevel = 1;
+    [SerializeField] public int LevelCount = 3;
+    [SerializeField] public int RoadLenght = 10;
+    [SerializeField] public int EmptyRoadLength = 2;
+    [SerializeField] public Difficulty Difficulty = Difficulty.Easy;
     private void Awake()
     {
         Instance = this;

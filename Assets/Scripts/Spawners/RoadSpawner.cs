@@ -7,6 +7,10 @@ public class RoadSpawner : MonoBehaviour
     private ObjectPooler _objectPooler;
     [SerializeField] private float groundSpawnDistance = 10f;
 
+    private int _emptyRoadCount = 0;
+    private int _roadCount = 0;
+    private bool _hasFinishLineGenerated = false;
+
     public static RoadSpawner Instance;
     private void Awake()
     {
@@ -32,7 +36,22 @@ public class RoadSpawner : MonoBehaviour
 
     public void SpawnGround()
     {
-        GameObject Road = _objectPooler.SpawnFromPool(PoolObjects.Road, new Vector3(0, 0, groundSpawnDistance), Quaternion.identity);
+        GameObject Road;
+
+        if (_roadCount >= LevelManager.Instance.RoadLenght)
+        {
+            if (_emptyRoadCount > LevelManager.Instance.EmptyRoadLength && !_hasFinishLineGenerated)
+            {
+                Road = _objectPooler.SpawnFromPool(PoolObjects.RoadWithFinishLine, new Vector3(0, 0, groundSpawnDistance), Quaternion.identity);
+                _hasFinishLineGenerated = true;
+                return;
+            }
+            _emptyRoadCount++;
+            Road = _objectPooler.SpawnFromPool(PoolObjects.RoadEmpty, new Vector3(0, 0, groundSpawnDistance), Quaternion.identity);
+            return;
+        }
+        _roadCount++;
+        Road = _objectPooler.SpawnFromPool(PoolObjects.Road, new Vector3(0, 0, groundSpawnDistance), Quaternion.identity);
         int type = Random.Range(1, 3);
         ObstacleSpawner.Instance.SpawnObstacle(Road, type);
         GemSpawner.Instance.SpawnGem(Road, type);

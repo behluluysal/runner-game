@@ -56,9 +56,8 @@ public class GemSpawner : MonoBehaviour
                 }
             }
         }
-        catch (System.Exception e)
+        catch (System.Exception)
         {
-            Debug.LogError(e.Message);
             throw;
         }
     }

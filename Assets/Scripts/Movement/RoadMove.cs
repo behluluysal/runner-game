@@ -27,8 +27,8 @@ public class RoadMove : MonoBehaviour
         {
             return;
         }
-
         transform.position += -Vector3.forward * Time.deltaTime * Speed;
+        
         if(transform.position.z <= _objectDistance && _canSpawnGround)
         {
             RoadSpawner.Instance.SpawnGround();
@@ -38,8 +38,11 @@ public class RoadMove : MonoBehaviour
         if(transform.position.z <= _despawnDistance)
         {
             _canSpawnGround = true;
-            ObstacleSpawner.Instance.SetObstaclesFalse(transform.gameObject);
-            GemSpawner.Instance.SetGemsFalse(transform.gameObject);
+            if(transform.CompareTag("RoadWithObstacle"))
+            {
+                ObstacleSpawner.Instance.SetObstaclesFalse(transform.gameObject);
+                GemSpawner.Instance.SetGemsFalse(transform.gameObject);
+            }
             gameObject.SetActive(false);
         }
     }
