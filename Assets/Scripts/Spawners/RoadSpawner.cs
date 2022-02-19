@@ -39,6 +39,7 @@ public class RoadSpawner : MonoBehaviour
             if (_emptyRoadCount > LevelManager.Instance.EmptyRoadLength && !_hasFinishLineGenerated)
             {
                 Road = _objectPooler.SpawnFromPool(PoolObjects.RoadWithFinishLine, new Vector3(0, 0, groundSpawnDistance), Quaternion.identity);
+                Road.transform.Find("FinishLine").gameObject.SetActive(true);
                 _hasFinishLineGenerated = true;
                 return;
             }
