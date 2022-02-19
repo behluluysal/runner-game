@@ -13,8 +13,14 @@ public class Pool
 
 public class ObjectPooler : MonoBehaviour
 {
-
+    [SerializeField] Transform GemFolder;
+    [SerializeField] Transform ObstacleFolder;
+    [SerializeField] Transform RoadWithObstacleFolder;
+    [SerializeField] Transform EmptyRoadFolder;
+    [SerializeField] Transform RoadWithFinishLineFolder;
+    [SerializeField] Transform VFXFolder;
     public static ObjectPooler Instance;
+
     private void Awake()
     {
         Instance = this;
@@ -37,6 +43,7 @@ public class ObjectPooler : MonoBehaviour
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
                 objectPool.Enqueue(obj);
+                AssignFolder(obj, pool.tag);
             }
 
             poolDictionary.Add(pool.tag, objectPool);
@@ -63,5 +70,23 @@ public class ObjectPooler : MonoBehaviour
         poolDictionary[tag].Enqueue(objectToSpawn);
 
         return objectToSpawn;
+    }
+    private void AssignFolder(GameObject obj, PoolObjects type)
+    {
+        if (type == PoolObjects.Road)
+            obj.transform.parent = RoadWithObstacleFolder;
+        else if (type == PoolObjects.RoadEmpty)
+            obj.transform.parent = EmptyRoadFolder;
+        else if (type == PoolObjects.Gem)
+            obj.transform.parent = GemFolder;
+        else if (type == PoolObjects.GemRed)
+            obj.transform.parent = GemFolder;
+        else if (type == PoolObjects.Obstacle)
+            obj.transform.parent = ObstacleFolder;
+        else if (type == PoolObjects.GemVFX)
+            obj.transform.parent = VFXFolder;
+        else if (type == PoolObjects.RoadWithFinishLine)
+            obj.transform.parent = RoadWithObstacleFolder;
+
     }
 }
