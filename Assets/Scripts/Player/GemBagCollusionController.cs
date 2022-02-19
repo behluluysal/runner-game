@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GemBagCollusionController : MonoBehaviour
 {
+    [SerializeField] public Transform GemFolder;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag == "Gem1" || collision.collider.tag == "Gem2")
@@ -14,7 +15,7 @@ public class GemBagCollusionController : MonoBehaviour
                 child.parent = null;
             }
             collision.gameObject.SetActive(false);
-            collision.transform.parent = null;
+            collision.transform.parent = GemFolder;
             collision.transform.GetComponent<MeshRenderer>().enabled = true;
             if(collision.collider.tag == "Gem1")
                 StartCoroutine(GameManager.Instance.AddScore(10));
