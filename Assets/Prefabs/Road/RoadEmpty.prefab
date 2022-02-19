@@ -48,6 +48,7 @@ MonoBehaviour:
   Speed: 5
   _objectDistance: -3
   _despawnDistance: -7.5
+  _canSpawnGround: 1
 --- !u!1 &7805639410721927805
 GameObject:
   m_ObjectHideFlags: 0

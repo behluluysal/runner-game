@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         if(obj == GameManager.GameState.PlayerTurn)
         {
+            transform.position = new Vector3(transform.position.x, 0, -6f);
             PlayerAnimator.Play("Running");
             Camera.main.transform.parent = null;
             VictoryStateCameraPos.transform.parent = transform;

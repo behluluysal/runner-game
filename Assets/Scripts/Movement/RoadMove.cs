@@ -6,44 +6,50 @@ public class RoadMove : MonoBehaviour
 {
 
     [SerializeField] private float Speed = 5;
-    [SerializeField] private float _objectDistance = -7.62f;
-    [SerializeField] private float _despawnDistance = -6f;
+    [SerializeField] private float _objectDistance = -5f;
+    [SerializeField] private float _despawnDistance = -10f;
 
-    private bool _canSpawnGround = true;
+    public bool _canSpawnGround = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        _canSpawnGround = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveRoad();
-    }
-    private void MoveRoad()
-    {
-        if(GameManager.Instance.State != GameManager.GameState.PlayerTurn)
+        if (GameManager.Instance.State != GameManager.GameState.PlayerTurn)
         {
             return;
         }
         transform.position += -Vector3.forward * Time.deltaTime * Speed;
-        
-        if(transform.position.z <= _objectDistance && _canSpawnGround)
+        try
         {
-            RoadSpawner.Instance.SpawnGround();
-            _canSpawnGround = false;
-        }
-        
-        if(transform.position.z <= _despawnDistance)
-        {
-            _canSpawnGround = true;
-            if(transform.CompareTag("RoadWithObstacle"))
+            if (transform.position.z <= _objectDistance && _canSpawnGround)
             {
-                ObstacleSpawner.Instance.SetObstaclesFalse(transform.gameObject);
-                GemSpawner.Instance.SetGemsFalse(transform.gameObject);
+                RoadSpawner.Instance.SpawnGround();
+                _canSpawnGround = false;
             }
-            gameObject.SetActive(false);
+
+            if (transform.position.z <= _despawnDistance)
+            {
+                _canSpawnGround = true;
+                gameObject.SetActive(false);
+                if (transform.CompareTag("RoadWithObstacle"))
+                {
+                    ObstacleSpawner.Instance.SetObstaclesFalse(transform.gameObject);
+                    GemSpawner.Instance.SetGemsFalse(transform.gameObject);
+                }
+
+            }
         }
+        catch (System.Exception e )
+        {
+            Debug.Log(e);
+            throw;
+        }
+        
     }
 }

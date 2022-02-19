@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5222896951542465318}
   - component: {fileID: 3333947876869024475}
   - component: {fileID: 8567686532143211729}
+  - component: {fileID: -5621949251129714728}
   m_Layer: 0
   m_Name: Diamond5side
   m_TagString: Gem1
@@ -146,3 +147,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GemAnimator: {fileID: 5248631272070590437}
+--- !u!114 &-5621949251129714728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668700306021958810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96606ba81d4580847b892e5e3700c57c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1891,7 +1891,7 @@ MonoBehaviour:
   pools:
   - tag: 0
     prefab: {fileID: 19374842991972801, guid: 7f6bf4fde7af4994facdbed9f68eca36, type: 3}
-    size: 4
+    size: 10
   - tag: 3
     prefab: {fileID: 3447974274385181832, guid: 7dd6bd6946886524499f7d012f3d303d, type: 3}
     size: 20
@@ -3132,7 +3132,7 @@ MonoBehaviour:
   Score: 0
   TotalScore: 0
   isBoostActive: 0
-  Health: 3
+  Health: 1
   UIScoreText: {fileID: 503235575}
   UIScoreAnimator: {fileID: 503235577}
   HP1: {fileID: 2046873280}
@@ -3140,6 +3140,8 @@ MonoBehaviour:
   HP3: {fileID: 165317973}
   HP4: {fileID: 2089376830}
   TotalScoreText: {fileID: 1861628665}
+  HpCostText: {fileID: 2118877278}
+  BoostCostText: {fileID: 921011805}
   BuyHpErrorText: {fileID: 831590946}
   BuyBoostErrorText: {fileID: 1519927135}
   RestartButton: {fileID: 135858535}
