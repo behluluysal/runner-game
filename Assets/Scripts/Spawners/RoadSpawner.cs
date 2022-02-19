@@ -33,26 +33,41 @@ public class RoadSpawner : MonoBehaviour
     public void SpawnGround()
     {
         GameObject Road;
-
-        if (_roadCount >= LevelManager.Instance.RoadLenght)
+        try
         {
-            if (_emptyRoadCount > LevelManager.Instance.EmptyRoadLength && !_hasFinishLineGenerated)
+            if (_roadCount >= LevelManager.Instance.RoadLenght)
             {
-                Road = _objectPooler.SpawnFromPool(PoolObjects.RoadWithFinishLine, new Vector3(0, 0, groundSpawnDistance), Quaternion.identity);
-                _hasFinishLineGenerated = true;
+                if (_emptyRoadCount > LevelManager.Instance.EmptyRoadLength && !_hasFinishLineGenerated)
+                {
+                    Road = _objectPooler.SpawnFromPool(PoolObjects.RoadWithFinishLine, new Vector3(0, 0, groundSpawnDistance), Quaternion.identity);
+                    MakeSureCanSpawnRoad(Road);
+                    Road.transform.Find("FinishLine").gameObject.SetActive(true);
+                    _hasFinishLineGenerated = true;
+                    return;
+                }
+                _emptyRoadCount++;
+                Road = _objectPooler.SpawnFromPool(PoolObjects.RoadEmpty, new Vector3(0, 0, groundSpawnDistance), Quaternion.identity);
+                MakeSureCanSpawnRoad(Road);
                 return;
             }
-            _emptyRoadCount++;
-            Road = _objectPooler.SpawnFromPool(PoolObjects.RoadEmpty, new Vector3(0, 0, groundSpawnDistance), Quaternion.identity);
-            return;
+            _roadCount++;
+            Road = _objectPooler.SpawnFromPool(PoolObjects.Road, new Vector3(0, 0, groundSpawnDistance), Quaternion.identity);
+            MakeSureCanSpawnRoad(Road);
+            int type = Random.Range(1, 4);
+            ObstacleSpawner.Instance.SpawnObstacle(Road, type);
+            GemSpawner.Instance.SpawnGem(Road, type);
         }
-        _roadCount++;
-        Road = _objectPooler.SpawnFromPool(PoolObjects.Road, new Vector3(0, 0, groundSpawnDistance), Quaternion.identity);
-        int type = Random.Range(1, 4);
-        ObstacleSpawner.Instance.SpawnObstacle(Road, type);
-        GemSpawner.Instance.SpawnGem(Road, type);
+        catch (System.Exception e)
+        {
+            Debug.Log(e);
+            throw;
+        }
+        
     }
-
+    private void MakeSureCanSpawnRoad(GameObject obj)
+    {
+        obj.GetComponent<RoadMove>()._canSpawnGround = true;
+    }
     private void GameManager_OnGameStateChanged(GameManager.GameState obj)
     {
         if(obj == GameManager.GameState.PlayerTurn && GameManager.Instance.NewGame)

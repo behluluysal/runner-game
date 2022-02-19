@@ -19,6 +19,7 @@ public class CollusionController : MonoBehaviour
         }
         if(collision.collider.tag == "Finish")
         {
+            collision.transform.gameObject.SetActive(false);
             GameManager.Instance.UpdateGameState(GameManager.GameState.Victory);
         }
     }

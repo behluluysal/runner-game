@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator PlayerAnimator;
     [SerializeField] private Transform PlayerCameras;
     [SerializeField] private Vector3 CameraOffSet = new Vector3(0f,9f,-10f);
+    [SerializeField] public GameObject VictoryStateCameraPos;
 
     private void Awake()
     {
@@ -22,7 +23,12 @@ public class PlayerController : MonoBehaviour
     {
         if(obj == GameManager.GameState.PlayerTurn)
         {
+            transform.position = new Vector3(transform.position.x, 0, -6f);
             PlayerAnimator.Play("Running");
+            Camera.main.transform.parent = null;
+            VictoryStateCameraPos.transform.parent = transform;
+            Camera.main.transform.rotation = Quaternion.Euler(17, 0, 0);
+
         }
         else if(obj == GameManager.GameState.Lose)
         {
@@ -30,7 +36,9 @@ public class PlayerController : MonoBehaviour
         }
         else if(obj == GameManager.GameState.Victory)
         {
-            //To Do Victory Pose and camera movement
+            PlayerAnimator.Play("Victory");
+            Camera.main.transform.parent = VictoryStateCameraPos.transform;
+            VictoryStateCameraPos.transform.parent = null;
         }
     }
 
@@ -47,7 +55,10 @@ public class PlayerController : MonoBehaviour
     }
     private void LateUpdate()
     {
-        PlayerCameras.position = transform.position + CameraOffSet;
-        transform.localEulerAngles = new Vector3(0, 0, 0);
+        if (GameManager.Instance.State == GameManager.GameState.PlayerTurn)
+        {
+            PlayerCameras.position = transform.position + CameraOffSet;
+            transform.localEulerAngles = new Vector3(0, 0, 0);
+        }
     }
 }

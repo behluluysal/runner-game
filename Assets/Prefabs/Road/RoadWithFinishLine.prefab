@@ -366,6 +366,7 @@ MonoBehaviour:
   Speed: 5
   _objectDistance: -3
   _despawnDistance: -7.5
+  _canSpawnGround: 1
 --- !u!1001 &3326387074501695050
 PrefabInstance:
   m_ObjectHideFlags: 0

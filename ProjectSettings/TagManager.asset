@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Gem1
   - RoadWithObstacle
+  - Gem2
   layers:
   - Default
   - TransparentFX
