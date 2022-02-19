@@ -871,6 +871,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402075146}
   m_CullTransparentMesh: 1
+--- !u!1001 &453645056
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 231945865320509084, guid: e3718c944bf0f1344a43f5538e4b0fea, type: 3}
+      propertyPath: m_Name
+      value: Diamond5side
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251436990498010831, guid: e3718c944bf0f1344a43f5538e4b0fea, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251436990498010831, guid: e3718c944bf0f1344a43f5538e4b0fea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251436990498010831, guid: e3718c944bf0f1344a43f5538e4b0fea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251436990498010831, guid: e3718c944bf0f1344a43f5538e4b0fea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251436990498010831, guid: e3718c944bf0f1344a43f5538e4b0fea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251436990498010831, guid: e3718c944bf0f1344a43f5538e4b0fea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251436990498010831, guid: e3718c944bf0f1344a43f5538e4b0fea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251436990498010831, guid: e3718c944bf0f1344a43f5538e4b0fea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251436990498010831, guid: e3718c944bf0f1344a43f5538e4b0fea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251436990498010831, guid: e3718c944bf0f1344a43f5538e4b0fea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251436990498010831, guid: e3718c944bf0f1344a43f5538e4b0fea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e3718c944bf0f1344a43f5538e4b0fea, type: 3}
 --- !u!1 &491640853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,9 +1488,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 526325168}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: StartGame
+      - m_Target: {fileID: 1811210667}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: StartOrContinueGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1505,6 +1562,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621707419}
   m_CullTransparentMesh: 1
+--- !u!1001 &626179099
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 805816253234289865, guid: c0101e851afee584993e41229a1ce09c, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 805816253234289865, guid: c0101e851afee584993e41229a1ce09c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 805816253234289865, guid: c0101e851afee584993e41229a1ce09c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 805816253234289865, guid: c0101e851afee584993e41229a1ce09c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 805816253234289865, guid: c0101e851afee584993e41229a1ce09c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 805816253234289865, guid: c0101e851afee584993e41229a1ce09c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 805816253234289865, guid: c0101e851afee584993e41229a1ce09c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 805816253234289865, guid: c0101e851afee584993e41229a1ce09c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 805816253234289865, guid: c0101e851afee584993e41229a1ce09c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 805816253234289865, guid: c0101e851afee584993e41229a1ce09c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 805816253234289865, guid: c0101e851afee584993e41229a1ce09c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668700306021958810, guid: c0101e851afee584993e41229a1ce09c, type: 3}
+      propertyPath: m_Name
+      value: Diamond5sideRed
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c0101e851afee584993e41229a1ce09c, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1906,6 +2020,9 @@ MonoBehaviour:
   - tag: 2
     prefab: {fileID: 5147007406331082686, guid: 50425016b345d27459282bcefae8305d, type: 3}
     size: 1
+  - tag: 5
+    prefab: {fileID: 231945865320509084, guid: e3718c944bf0f1344a43f5538e4b0fea, type: 3}
+    size: 20
 --- !u!4 &899021696
 Transform:
   m_ObjectHideFlags: 0
@@ -2825,7 +2942,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentLevel: 1
   LevelCount: 3
-  RoadLenght: 5
+  RoadLenght: 6
   EmptyRoadLength: 2
   Difficulty: 0
 --- !u!1 &1704982501
@@ -3080,6 +3197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f8663fe12c730479c1e13192a2c836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NewGame: 1
   State: 0
   Score: 0
   TotalScore: 0

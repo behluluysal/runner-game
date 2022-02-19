@@ -22,13 +22,20 @@ public class ObstacleSpawner : MonoBehaviour
             SetAllChildsFalse(Parent.transform);
             typeObj.gameObject.SetActive(true);
             typeObj = typeObj.Find("Obstacles");
-
+            int obstacleAngleSpecific = 45; // For Type 3 obstacle angle, can be used for other types too
             foreach (Transform child in typeObj)
             {
                 GameObject obstacle = _objectPooler.SpawnFromPool(PoolObjects.Obstacle, new Vector3(0, 0, 0), Quaternion.identity);
                 obstacle.transform.parent = child;
                 obstacle.transform.localPosition = new Vector3(0, 0, 0);
-                obstacle.transform.rotation = Quaternion.Euler(0, 90, 0);
+                if(type == 1 || type == 2)
+                    obstacle.transform.rotation = Quaternion.Euler(0, 90, 0);
+                else if (type == 3)
+                {
+                    obstacle.transform.rotation = Quaternion.Euler(0, obstacleAngleSpecific, 0);
+                    obstacleAngleSpecific += 90;
+                }
+                    
             }
         }
         catch (System.Exception e)

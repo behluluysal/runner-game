@@ -6,7 +6,7 @@ public class GemBagCollusionController : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Gem1")
+        if (collision.collider.tag == "Gem1" || collision.collider.tag == "Gem2")
         {
             foreach (Transform child in collision.transform)
             {
@@ -16,7 +16,10 @@ public class GemBagCollusionController : MonoBehaviour
             collision.gameObject.SetActive(false);
             collision.transform.parent = null;
             collision.transform.GetComponent<MeshRenderer>().enabled = true;
-            StartCoroutine(GameManager.Instance.AddScore(50));
+            if(collision.collider.tag == "Gem1")
+                StartCoroutine(GameManager.Instance.AddScore(10));
+            else if (collision.collider.tag == "Gem2")
+                StartCoroutine(GameManager.Instance.AddScore(50));
         }
     }
 }

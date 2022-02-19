@@ -5,5 +5,6 @@
     RoadWithFinishLine,
     Obstacle,
     Gem,
+    GemRed,
     GemVFX
 }

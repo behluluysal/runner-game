@@ -48,7 +48,7 @@ public class RoadSpawner : MonoBehaviour
         }
         _roadCount++;
         Road = _objectPooler.SpawnFromPool(PoolObjects.Road, new Vector3(0, 0, groundSpawnDistance), Quaternion.identity);
-        int type = Random.Range(1, 3);
+        int type = Random.Range(1, 4);
         ObstacleSpawner.Instance.SpawnObstacle(Road, type);
         GemSpawner.Instance.SpawnGem(Road, type);
     }
