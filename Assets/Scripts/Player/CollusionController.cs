@@ -17,10 +17,9 @@ public class CollusionController : MonoBehaviour
                 GameManager.Instance.HPLoss();
             }
         }
-        if (collision.collider.tag == "Gem1")
+        if(collision.collider.tag == "Finish")
         {
-            Debug.LogError("gemtouch");
-            StartCoroutine(GameManager.Instance.AddScore(5));
+            GameManager.Instance.UpdateGameState(GameManager.GameState.Victory);
         }
     }
 }

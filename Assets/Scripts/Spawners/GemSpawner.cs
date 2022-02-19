@@ -25,14 +25,26 @@ public class GemSpawner : MonoBehaviour
 
             foreach (Transform child in typeObj)
             {
-                GameObject obstacle = _objectPooler.SpawnFromPool(PoolObjects.Gem, new Vector3(0, 0, 0), Quaternion.identity);
-                obstacle.transform.parent = child;
-                obstacle.transform.localPosition = new Vector3(0, 0, 0);
+                GameObject gem = null;
+                if (type == 1 || type == 2)
+                {
+                    gem = _objectPooler.SpawnFromPool(PoolObjects.Gem, new Vector3(0, 0, 0), Quaternion.identity);
+                }
+                else if(type == 3 || type == 4)
+                {
+                   gem = _objectPooler.SpawnFromPool(PoolObjects.GemRed, new Vector3(0, 0, 0), Quaternion.identity);
+                }
+                
+                if (gem == null) //Better to be cautious
+                    return;
+
+                gem.transform.parent = child;
+                gem.transform.localPosition = new Vector3(0, 0, 0);
             }
         }
         catch (System.Exception e)
         {
-            Debug.LogError("ete");
+            Debug.LogError(e.Message);
             throw;
         }
 

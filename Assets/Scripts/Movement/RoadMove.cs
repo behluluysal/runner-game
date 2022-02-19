@@ -6,9 +6,8 @@ public class RoadMove : MonoBehaviour
 {
 
     [SerializeField] private float Speed = 5;
-    [SerializeField] private float Sensitivity = 3;
-    [SerializeField] private float _objectDistance = -10f;
-    [SerializeField] private float _despawnDistance = -20f;
+    [SerializeField] private float _objectDistance = -7.62f;
+    [SerializeField] private float _despawnDistance = -6f;
 
     private bool _canSpawnGround = true;
 
@@ -28,8 +27,8 @@ public class RoadMove : MonoBehaviour
         {
             return;
         }
-
         transform.position += -Vector3.forward * Time.deltaTime * Speed;
+        
         if(transform.position.z <= _objectDistance && _canSpawnGround)
         {
             RoadSpawner.Instance.SpawnGround();
@@ -39,8 +38,11 @@ public class RoadMove : MonoBehaviour
         if(transform.position.z <= _despawnDistance)
         {
             _canSpawnGround = true;
-            ObstacleSpawner.Instance.SetObstaclesFalse(transform.gameObject);
-            GemSpawner.Instance.SetGemsFalse(transform.gameObject);
+            if(transform.CompareTag("RoadWithObstacle"))
+            {
+                ObstacleSpawner.Instance.SetObstaclesFalse(transform.gameObject);
+                GemSpawner.Instance.SetGemsFalse(transform.gameObject);
+            }
             gameObject.SetActive(false);
         }
     }
